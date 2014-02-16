@@ -8,7 +8,8 @@
 
 	<xsl:output method="html" encoding="UTF-8" indent="no"/>
 
-	<xsl:param name="MERGED"/>
+  <xsl:param name="MERGED"
+    select="'/Users/teux/WebstormProjects/teux.github/temp/teux_MERGED.xml'"/>
 
 	<xsl:variable name="curid">
 		<xsl:variable name="id" select="/*/@id"/>
@@ -104,6 +105,20 @@
 						<!-- Include a user's XSL call here to generate a toc based on what's a child of topic -->
 						<xsl:call-template name="gen-user-sidetoc"/>
 						<xsl:apply-templates/>
+                        <!--Discqus widget-->
+                        <xsl:if test="contains(/*/@otherprops, 'use-disqus')">
+                            <div id="disqus_thread"></div>
+                            <script type="text/javascript">
+                                var disqus_shortname = "teux",
+                                    disqus_identifier = "<xsl:value-of select="/*/@id"/>",
+                                    disqus_url = "http://www.teux.ru/<xsl:value-of select="concat(/*/@id, $OUTEXT)"/>";
+                                (function() {
+                                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                                })();
+                            </script>
+                        </xsl:if>
 					</div>
 					<xsl:call-template name="bottom"/>
 				</div>
