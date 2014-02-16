@@ -1,11 +1,12 @@
-﻿<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	xmlns:exsl="http://exslt.org/common" xmlns:opentopic="http://www.idiominc.com/opentopic"
-	xmlns:related-links="http://dita-ot.sourceforge.net/ns/200709/related-links"
-	exclude-result-prefixes="exsl opentopic related-links">
+﻿<xsl:stylesheet version="2.0"
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	            xmlns:exsl="http://exslt.org/common"
+                xmlns:opentopic="http://www.idiominc.com/opentopic"
+	            exclude-result-prefixes="exsl opentopic">
 
-	<xsl:import href="../../../xsl/dita2xhtml.xsl"/>
+	<xsl:import href="../../org.dita.xhtml/xsl/dita2xhtml.xsl"/>
 
-	<xsl:output method="html" encoding="Windows-1251" indent="no"/>
+	<xsl:output method="html" encoding="UTF-8" indent="no"/>
 
 	<xsl:param name="MERGED"/>
 
@@ -18,12 +19,11 @@
 	<xsl:variable name="curPart"
 		select="$map/*[contains(@class, ' bookmap/part ')][descendant-or-self::*[@id=$curid]]"/>
 
-
 	<!-- Head -->
 	<xsl:template name="chapterHead">
 		<xsl:variable name="head">
 			<head>
-				<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251"/>
+				<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 				<xsl:call-template name="generateChapterTitle"/>
 				<!-- Generate the <title> element -->
 				<xsl:call-template name="generateKeywords"/>
@@ -31,6 +31,7 @@
 				<link type="text/css" rel="stylesheet" href="stylesheets/screen_styles.css"/>
 				<link type="text/css" media="screen" rel="stylesheet"
 					href="stylesheets/colorbox.css"/>
+                <link rel="shortcut icon" href="images/favicon.ico"/>
 				<script type="text/javascript" src="scripts/jquery.min.js"/>
 				<script type="text/javascript" src="scripts/jquery.colorbox.js"/>
 				<script type="text/javascript" src="scripts/main.js"/>
@@ -81,21 +82,9 @@
 
 	<!-- Body  -->
 	<xsl:template name="chapterBody">
-		<xsl:variable name="flagrules">
-			<xsl:call-template name="getrules"/>
-		</xsl:variable>
-		<xsl:variable name="conflictexist">
-			<xsl:call-template name="conflict-check">
-				<xsl:with-param name="flagrules" select="$flagrules"/>
-			</xsl:call-template>
-		</xsl:variable>
 		<xsl:variable name="topnav">
 			<body
 				onload="if (navigator.appName.indexOf('Microsoft')!=-1) window.jstree.OpenTreeNode(window.pageid);">
-				<xsl:call-template name="gen-style">
-					<xsl:with-param name="conflictexist" select="$conflictexist"/>
-					<xsl:with-param name="flagrules" select="$flagrules"/>
-				</xsl:call-template>
 				<xsl:call-template name="setidaname"/>
 				<!-- [Teux ]Top navigation -->
 				<div id="container">
@@ -108,12 +97,6 @@
 						<xsl:call-template name="chain"/>
 
 						<!-- Original topic translation -->
-						<xsl:call-template name="start-flagit">
-							<xsl:with-param name="flagrules" select="$flagrules"/>
-						</xsl:call-template>
-						<xsl:call-template name="start-revflag">
-							<xsl:with-param name="flagrules" select="$flagrules"/>
-						</xsl:call-template>
 						<xsl:call-template name="generateBreadcrumbs"/>
 						<xsl:call-template name="gen-user-header"/>
 						<!-- include user's XSL running header here -->
@@ -121,13 +104,6 @@
 						<!-- Include a user's XSL call here to generate a toc based on what's a child of topic -->
 						<xsl:call-template name="gen-user-sidetoc"/>
 						<xsl:apply-templates/>
-						<!-- this will include all things within topic; therefore, -->
-						<xsl:call-template name="end-revflag">
-							<xsl:with-param name="flagrules" select="$flagrules"/>
-						</xsl:call-template>
-						<xsl:call-template name="end-flagit">
-							<xsl:with-param name="flagrules" select="$flagrules"/>
-						</xsl:call-template>
 					</div>
 					<xsl:call-template name="bottom"/>
 				</div>
@@ -373,65 +349,23 @@
 
 	<!-- Из оригинального шаблона убрана вставка перевода строки -->
 	<xsl:template match="*[contains(@class,' topic/ul ')]" mode="ul-fmt">
-		<xsl:variable name="flagrules">
-			<xsl:call-template name="getrules"/>
-		</xsl:variable>
-		<xsl:variable name="conflictexist">
-			<xsl:call-template name="conflict-check">
-				<xsl:with-param name="flagrules" select="$flagrules"/>
-			</xsl:call-template>
-		</xsl:variable>
-		<xsl:call-template name="start-flagit">
-			<xsl:with-param name="flagrules" select="$flagrules"/>
-		</xsl:call-template>
-		<xsl:call-template name="start-revflag">
-			<xsl:with-param name="flagrules" select="$flagrules"/>
-		</xsl:call-template>
 		<xsl:call-template name="setaname"/>
 		<ul>
 			<xsl:call-template name="commonattributes"/>
-			<xsl:call-template name="gen-style">
-				<xsl:with-param name="conflictexist" select="$conflictexist"/>
-				<xsl:with-param name="flagrules" select="$flagrules"/>
-			</xsl:call-template>
 			<xsl:apply-templates select="@compact"/>
 			<xsl:call-template name="setid"/>
 			<xsl:apply-templates/>
 		</ul>
-		<xsl:call-template name="end-revflag">
-			<xsl:with-param name="flagrules" select="$flagrules"/>
-		</xsl:call-template>
-		<xsl:call-template name="end-flagit">
-			<xsl:with-param name="flagrules" select="$flagrules"/>
-		</xsl:call-template>
 		<xsl:value-of select="$newline"/>
 	</xsl:template>
 
 	<!-- Из оригинального шаблона убрана вставка перевода строки -->
 	<xsl:template match="*[contains(@class,' topic/ol ')]" name="topic.ol">
-		<xsl:variable name="flagrules">
-			<xsl:call-template name="getrules"/>
-		</xsl:variable>
-		<xsl:variable name="conflictexist">
-			<xsl:call-template name="conflict-check">
-				<xsl:with-param name="flagrules" select="$flagrules"/>
-			</xsl:call-template>
-		</xsl:variable>
 		<xsl:variable name="olcount"
 			select="count(ancestor-or-self::*[contains(@class,' topic/ol ')])"/>
-		<xsl:call-template name="start-flagit">
-			<xsl:with-param name="flagrules" select="$flagrules"/>
-		</xsl:call-template>
-		<xsl:call-template name="start-revflag">
-			<xsl:with-param name="flagrules" select="$flagrules"/>
-		</xsl:call-template>
 		<xsl:call-template name="setaname"/>
 		<ol>
 			<xsl:call-template name="commonattributes"/>
-			<xsl:call-template name="gen-style">
-				<xsl:with-param name="conflictexist" select="$conflictexist"/>
-				<xsl:with-param name="flagrules" select="$flagrules"/>
-			</xsl:call-template>
 			<xsl:apply-templates select="@compact"/>
 			<xsl:choose>
 				<xsl:when test="$olcount mod 3 = 1"/>
@@ -445,12 +379,6 @@
 			<xsl:call-template name="setid"/>
 			<xsl:apply-templates/>
 		</ol>
-		<xsl:call-template name="end-revflag">
-			<xsl:with-param name="flagrules" select="$flagrules"/>
-		</xsl:call-template>
-		<xsl:call-template name="end-flagit">
-			<xsl:with-param name="flagrules" select="$flagrules"/>
-		</xsl:call-template>
 		<xsl:value-of select="$newline"/>
 	</xsl:template>
 

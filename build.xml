@@ -8,7 +8,9 @@
 	</path>
 	<property name="out.ext" value=".html"/>
 	<property name="args.xsl" value="${dita.plugin.ru.teux.site.dir}/xsl/site2xhtml.xsl"/>
-			
+    <condition property="file.prefix" value="file:/" else="">
+        <os family="windows"/>
+    </condition>
 
 	<target name="dita2teux.site" depends="plugin-init,site.xhtml"/>
 	<target name="dita2teux.file" depends="plugin-init,file.xhtml"/>
@@ -42,7 +44,7 @@
 	<target name="merge">
 		<pipeline message="topicmerge"
 				inputmap="${work.dir}/${dita.temp.dir}/${user.input.file}"
-				tempdir="W:/Teux.site/out/temp">
+				tempdir="${dita.temp.dir}">
 			<module class="org.dita.dost.module.TopicMergeModule">
 				<param name="validate" value="no"></param>
 				<param name="output"
@@ -68,7 +70,7 @@
 			includesfile="${work.dir}/${dita.temp.dir}/${fullditatopicfile}"
 			destdir="${dita.map.output.dir}" style="${args.xsl}">
 			<param name="MERGED"
-				expression="file:/${work.dir}\${dita.temp.dir}\teux_MERGED.xml"/>
+				expression="${file.prefix}${work.dir}/${dita.temp.dir}/teux_MERGED.xml"/>
 			<param name="DITAEXT" expression="${dita.ext}" if="dita.ext"/>
 			<param name="FILTERFILE" expression="${dita.input.valfile}" if="dita.input.valfile"/>
 			<param name="CSS" expression="${args.css.file}" if="args.css.file"/>
@@ -96,7 +98,7 @@
 			<includesfile name="${work.dir}/${dita.temp.dir}/${chunkedtopicfile}"
 				if="chunkedtopicfile"/>
 			<param name="MERGED"
-				expression="file:/${work.dir}\${dita.temp.dir}\teux_MERGED.xml"/>
+				expression="${file.prefix}${work.dir}/${dita.temp.dir}/teux_MERGED.xml"/>
 			<param name="DITAEXT" expression="${dita.ext}" if="dita.ext"/>
 			<param name="FILTERFILE" expression="${dita.input.valfile}" if="dita.input.valfile"/>
 			<param name="CSS" expression="${args.css.file}" if="args.css.file"/>

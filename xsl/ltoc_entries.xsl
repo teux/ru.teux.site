@@ -6,7 +6,7 @@
 	xmlns:opentopic="http://www.idiominc.com/opentopic"
 	exclude-result-prefixes="exsl opentopic">
 
-<xsl:output method="text" encoding="Windows-1251" indent="no"/>
+<xsl:output method="text" encoding="UTF-8" indent="no"/>
 
 <xsl:param name="DITAEXT"/>
 <xsl:param name="OUTEXT"/>
@@ -23,7 +23,7 @@
 	<xsl:text>.js</xsl:text>
   </xsl:variable>
   
-  <xsl:result-document href="{$treeName}" method="text" encoding="Windows-1251" indent="no">
+  <xsl:result-document href="{$treeName}" method="text" encoding="UTF-8" indent="no">
     <xsl:text>//Local TOC for </xsl:text><xsl:value-of select="./@ohref"/><xsl:value-of select="$newline"/> 
   	<xsl:text>var TITEMS = [</xsl:text><xsl:value-of select="$newline"/> 
 	  <xsl:call-template name="tocEntry"/>

@@ -3,7 +3,9 @@ ru.teux.site
 
 DITA OT plugin for personal teux site produce
 
-`cd {dita-ot-root}/plugins/`
+Used DITA-OT1.8.M2
+
+`cd {DITA_HOME}/plugins/`
 `git clone git@github.com:teux/ru.teux.photo.git`
-`cd {dita-ot-root}`
+`cd {DITA_HOME}`
 `ant -f integrator.xml`

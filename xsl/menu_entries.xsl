@@ -6,7 +6,7 @@
 	xmlns:opentopic="http://www.idiominc.com/opentopic"
 	exclude-result-prefixes="exsl opentopic">
 
-<xsl:output method="text" encoding="Windows-1251" indent="no"/>
+<xsl:output method="text" encoding="UTF-8" indent="no"/>
 
 <xsl:param name="DITAEXT"/>
 <xsl:param name="OUTEXT"/>
