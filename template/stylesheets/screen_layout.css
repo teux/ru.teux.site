@@ -1,0 +1,344 @@
+﻿/***********************************************************************************************************/
+/* Screen Layout                                                                                           */
+/***********************************************************************************************************/
+
+
+/* Normalization ------------------------------------------------------------------------------------------*/
+html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, p, blockquote, th, td { margin: 0; padding: 0; }
+h1, h2, h3, h4, h5, h6 { font-size: 100%; }
+ol, ul { list-style: none; }
+address, caption, cite, code, dfn, em, strong, th, var { font-style: normal; font-weight: normal; }
+fieldset, img { border: 0; }
+caption, th { text-align: left; }
+blockquote:before, blockquote:after, q:before, q:after { content: ''; }
+
+
+/* Page structure -----------------------------------------------------------------------------------------*/
+/* outline, centered layout:
+html
+  body
+    div#container
+	  div#branding
+	  div#navigation_main
+	  div#tools
+	  div#dashboard
+	    div#navigation_secondary ul
+		div#headlines
+		div#quote-request
+        div#contact-info
+		div.dashboard-space
+      div#content_main
+	    div#breadcrumbs
+		div#dashboard_secondary
+		div#content             <-- one-column layout
+		div#content_title       <-- two-column layout (with title span)
+		div#content_primary     <-- two-column layout
+		div#content_secondary   <-- two-column layout
+	  div#navigation_supplemental
+	    ul#quick_links
+		ul#languages
+	  div#site_information
+*/
+html,body{height:100%;}
+div#container {
+  position: relative;
+  width: 990px;
+  margin: 0 auto;
+}
+
+
+/* Header items -------------------------------------------------------------------------------------------*/
+/* branding */
+div#branding { height: 69px; }
+div#branding a:link,
+div#branding a:active,
+div#branding a:visited,
+div#branding a:hover {
+  display: block;
+  width: 425px;
+  height: 69px;
+  cursor: pointer;
+  outline: none;
+}
+div#branding h1 {
+  width: 425px;
+  height: 69px;
+  margin: 0;
+}
+div#branding p {
+  display: none;
+}
+
+/* navigation - main */
+div#navigation_main ul {
+  width: 100%;
+  height: 31px;
+}
+div#navigation_main ul li {
+  display: inline;
+}
+div#navigation_main ul a {
+  padding: 3px 12px 4px;
+  margin: 1px 0 0;
+  float: left;
+}
+div#navigation_main ul li.first a {
+  padding-left: 14px;
+  margin-left: 7px;
+}
+div#navigation_main ul li.current a:link,
+div#navigation_main ul li.current a:visited,
+div#navigation_main ul li.current a:active,
+div#navigation_main ul li.current a:hover {
+  cursor: default;
+}
+
+/* page tools */
+div#tools {
+  position: absolute;
+  width: 560px;
+  top: 40px;
+  right: 0px;
+}
+div#tools h3 {
+  display: none;
+}
+ul#page_tools {
+  width: 100%;
+}
+ul#page_tools li {
+  float: right;
+}
+
+/* Deprecated: */
+ul#page_tools li#search {
+  padding: 0 0 0 0;
+}
+ul#page_tools input {
+  margin: 0;
+}
+ul#page_tools input#search_button {
+  padding: 0 2px 0;
+  margin: 0 1em 0 0 !important;
+  cursor: pointer;
+  width: 21px;
+  overflow: visible;
+  height: 18px;
+  outline: none;
+  vertical-align: top;
+  outline: none;
+  position: relative;
+  left: -5px;
+}
+
+/* dashboard */
+div#dashboard {
+  float: left;
+  position: relative;
+  left: 6px;
+  top: 10px;
+  width: 193px;
+  margin-bottom: 10px;
+}
+
+/* dashboard - secondary navigation */
+div#navigation_secondary p.title {
+  display: block;
+  margin: 0 0 .75em 4px;
+  padding: 0 0 0 10px;
+}
+div#ltoc {
+  	width:175px;
+  	margin-bottom: 10px;
+  	margin-left: 8px;
+	padding-top:1px;
+  	padding-bottom:4px;
+  	padding-right:10px;
+  	overflow:auto;
+	overflow-y:hidden;
+	overflow:visible;
+	overflow-x:auto;
+}
+div#ltoc:hover {
+  	margin-bottom: 9px;
+  	padding-top:0px;
+}
+table.ltoc td{
+	padding: 0;
+	white-space: nowrap;
+}
+
+/* dashboard - contact info */
+div#contact-info {
+  position: relative;
+  left: 1px;
+  width: 173px;
+  margin: 0 0 10px;
+  padding: .75em 10px 1.25em;
+}
+div#contact-info {
+  padding-bottom: .5em;
+}
+div#contact-info h3{
+  margin: 0 0 .75em;
+  padding: 0;
+}
+div#contact-info ul {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+div#contact-info ul li {
+  display: block;
+  margin-bottom: 0;
+  padding: 3px 0;
+  height: 32px;
+  clear: both;
+}
+div#contact-info ul li.last {
+  padding-bottom: 0;
+}
+div#contact-info ul li.spacer a {
+  display: block;
+  height: 1em;
+}
+div#contact-info ul li img {
+  float: left;
+  margin: 0 8px 0 0;
+}
+
+/* dashboard - last published */
+div#last-published {
+  position: relative;
+  left: 1px;
+  width: 173px;
+  margin: 0 0 10px;
+  padding: .75em 10px 1.25em;
+}
+div#last-published {
+  padding-bottom: .5em;
+}
+div#last-published h3{
+  margin: 0 0 .75em;
+  padding: 0;
+}
+div#last-published ul {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+div#last-published ul li {
+  display: block;
+  margin-bottom: 0;
+  padding: 3px 0;
+  height: 32px;
+  clear: both;
+}
+div#last-published ul li.last {
+  padding-bottom: 0;
+}
+div#last-published ul li.spacer a {
+  display: block;
+  height: 1em;
+}
+div#last-published ul li img {
+  float: left;
+  margin: 0 8px 0 0;
+}
+/* Body content -------------------------------------------------------------------------------------------*/
+/* content - main div */
+div#content_main {
+  position: relative;
+  top: 10px;
+  height: 350px;
+  width: 746px;
+  margin: 0 0 10px 222px;
+}
+div.float-left{float: left; margin: 10pt 16px 0pt 0}
+div.float-right{float: right; margin: 10pt 0 10pt 16px}
+.clearFloat{ display: block;height: 0;clear: both;visibility: hidden;}
+p.floating-title{text-align:center;font-family:arial, helvetica, sans-serif;font-size:8pt;color:gray;font-weight:bold}
+
+* > div#content_main { /* IE min-height fix */
+  min-height: 350px;
+  height: auto;
+}
+/* Codeblock and Pre */
+div#content_main pre.codeblock{white-space: pre-wrap;	padding: 4pt 4px 4pt 4px}
+
+div#content_main p.camera{	margin: 0}
+div#content_main ul,
+div#content_main ol {
+  margin: 6pt 0 6pt 8px;
+  padding: 0;
+}
+
+div#content_main ol li,
+div#content_main ul li {
+  margin: 6pt 0 0 24px;
+}
+
+/* content pages (simple and with info) */
+div#content_main.simple-content div#breadcrumbs,
+div#content_main.simple-content h2,
+div#content_main.with-info div#breadcrumbs,
+div#content_main.with-info h2 {
+  width: 100%;
+}
+
+/* content - inline text styling */
+table.photoFile p.photoTitle{
+	margin: 0 20px 0 0;
+}
+
+/* Supplemental navigation, site info, quick links, languages ---------------------------------------------*/
+div#navigation_supplemental {
+  clear: both;
+  padding: 10px 25px 0;
+  height: 42px;
+}
+div#navigation_supplemental h3 {
+  display: none;
+}
+ul#quick_links {
+  width: 10px;
+  float: left;
+  position: relative;
+  left: 55px;
+  margin-top: 5px;
+}
+ul#quick_links li {
+  float: left;
+  padding: 0 8px;
+}
+ul#quick_links li.first {
+  padding-left: 0;
+}
+ul#inner_navigation {
+  width: 700px;
+  float: right;
+  margin-top: .25em;
+}
+ul#inner_navigation li {
+  float: right;
+  padding: 0 8px;
+}
+ul#inner_navigation li.first {
+  padding-right: 0;
+}
+
+/* js dropdown menus */
+#dropmenudiv {
+  position: absolute;
+  margin-left: -1px;
+  margin-top: 0px;
+  z-index: 100;
+}
+#dropmenudiv a {
+  width: 160px; /* This has to match the hardcoded width of 175px (- the padding) */
+  display: block;
+  padding: 3px 6px 3px 12px;
+}
+#dropmenudiv div.menu-tool-tip {
+  padding: 3px 6px 3px 12px;
+}

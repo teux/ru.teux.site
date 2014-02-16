@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin id="ru.teux.site">
+  <feature extension="dita.conductor.transtype.check" value="teux.site,teux.file" type="xhtml"/>
+  <feature extension="dita.conductor.target.relative" file="plugin-target.xml"/>
+</plugin>

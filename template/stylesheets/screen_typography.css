@@ -1,0 +1,182 @@
+/* Page structure -----------------------------------------------------------------------------------------*/
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #333;
+  font-size: 10pt;
+  text-align: center;
+}
+div#container {
+   text-align: left;
+}
+
+/* Header items -------------------------------------------------------------------------------------------*/
+/* branding */
+div#branding h1 {
+  text-indent: -9999px;
+}
+/* navigation - main */
+div#navigation_main ul a {
+  font-size: 13px;
+  text-decoration: none;
+  line-height: 16px;
+}
+div#ltoc {line-height: 0pt;font-size:0}
+
+/* page tools */
+div#tools {
+  text-align: right;
+}
+ul#page_tools li#search,
+ul#page_tools input {
+  font-size: 13px;
+}
+ul#page_tools input#search_button {
+  line-height: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  text-indent: -9999px;
+}
+
+/* dashboard - headlines, quote request, contact info, dashboard space */
+div#contact-info p {
+  font-size: 85%;
+  line-height: 1.5em !important;
+}
+div#contact-info h3 {
+  font-size: 13px;
+}
+div#contact-info {
+  font-size: 85%;
+  line-height: 1.25em;
+}
+div#contact-info ul li{
+  list-style-type: none;
+  font-size: 11px;
+}
+div#last-published p {
+  font-size: 85%;
+  line-height: 1.5em !important;
+}
+div#last-published h3 {
+  font-size: 13px;
+}
+div#last-published {
+  font-size: 85%;
+  line-height: 1.25em;
+}
+div#last-published ul li{
+  list-style-type: none;
+  font-size: 11px;
+}
+div.dashboard-space ul,
+div.dashboard-space ol {
+  line-height: 1.25em;
+}
+
+/* Body content -------------------------------------------------------------------------------------------*/
+/* content - default tag styles */
+div#content_main p{
+  line-height: 1.5em;
+}
+div#content_main p.toc{
+  font-weight: bold;
+}
+div#content_main ol {
+  list-style-type: decimal;
+}
+div#content_main ul {
+  list-style-type: disc;
+}
+div#content_main ul.ullinks {
+  list-style-type: none;
+}
+div#content_main ul li ul {
+  list-style-type: circle;
+}
+div#content_main li.ulchildlink {
+  font-size: 10pt;
+}
+/* content - inline text styling */
+div#content_main strong {
+  font-weight: bold;
+}
+div#content_main em {
+  font-style: italic;
+}
+div#content_main sub {
+}
+div#content_main sup {
+}
+div#content_main span.deleted {
+  text-decoration: line-through;
+}
+div#content_main span.underline {
+  text-decoration: underline;
+}
+table.photoFile span.photoTitle {
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+  font-size: 8pt;
+}
+/* pre and codeblock */
+div#content_main pre{font-family: "Courier New", Courier, monospace;font-size: 9pt;line-height: 110%}
+div#content_main span.underline{text-decoration: underline}
+div#content_main span.filepath,
+div#content_main span.codeph{font-family:"Courier New", Courier, monospace;}
+div#content_main span.uicontrol{font-weight: bold}
+div#content_main var.varname{color:navy;font-size:10pt}
+
+/* content - breadcrumbs */
+div#breadcrumbs {
+  font-size: 11px;
+  font-style: italic;
+}
+div#breadcrumbs span {
+  font-style: normal;
+}
+div#breadcrumbs span.local-tag {
+  font-style: normal;
+  font-weight: bold;
+}
+div#breadcrumbs strong {
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* Supplemental navigation, site info, quick links, languages ---------------------------------------------*/
+div#navigation_supplemental,
+div#site_information {
+  font-size: 11px;
+}
+ul#quick_links li {
+  list-style-type: none;
+}
+ul#languages li {
+  list-style-type: none;
+}
+
+/* Global Styles ------------------------------------------------------------------------------------------*/
+/* general formatting */
+.bold {
+  font-weight: bold !important;
+}
+.underline {
+  text-decoration: underline !important;
+}
+.center {
+  text-align: center !important;
+}
+
+/* js dropdown menus */
+#dropmenudiv {
+  line-height: 16px;
+  font-size: 12px;
+  text-align: left;
+}
+#dropmenudiv a {
+  text-indent: 0;
+  text-decoration: none;
+  font-weight: normal;
+}
+#dropmenudiv div.menu-tool-tip {
+  font-weight: normal;
+}

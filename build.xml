@@ -1,0 +1,145 @@
+﻿<?xml version="1.0"?>
+
+<project name="site.build" basedir="." default="site">
+
+	<property name="work.dir" value="${basedir}"/>
+	<path id="dost.class.path">
+		<pathelement location="${dita.dir}${file.separator}lib${file.separator}dost.jar"/>
+	</path>
+	<property name="out.ext" value=".html"/>
+	<property name="args.xsl" value="${dita.plugin.ru.teux.site.dir}/xsl/site2xhtml.xsl"/>
+			
+
+	<target name="dita2teux.site" depends="plugin-init,site.xhtml"/>
+	<target name="dita2teux.file" depends="plugin-init,file.xhtml"/>
+	<target name="plugin-init" depends="set-prop,build-init,preprocess"/>
+	<target name="set-prop">
+		<property name="args.grammar.cache" value="yes"/>
+		<property name="preprocess.copy-generated-files.skip" value="yes"/>
+		<property name="preprocess.mapref.skip" value="yes"/>
+		<property name="preprocess.mappull.skip" value="yes"/>
+		<!--Вывод related-links типа child-->
+		<property name="args.rellinks" value="all"/>
+		<property name="include.rellinks" value="child"/>
+		<!--Следующие свойства не должны устанвливатсья, чтобы правильно выводились related-links-->
+		<!--<property name="preprocess.topicpull.skip" value="yes"/>-->
+		<!--<property name="preprocess.maplink.skip" value="yes"/>-->
+		<!--<property name="preprocess.move-links.skip" value="yes"/>-->
+	</target>
+
+
+	<target name="info">
+		<echo>******************************************</echo>
+		<echo>* work.dir=${work.dir}</echo>
+		<echo>* dita.temp.dir=${dita.temp.dir}</echo>
+		<echo>* dita.map.output.dir=${dita.map.output.dir}</echo>
+		<echo>* input.file=${work.dir}/${dita.temp.dir}/${user.input.file}</echo>
+		<echo>* dita.input.valfile=${dita.input.valfile}</echo>
+		<echo>******************************************</echo>
+	</target>
+
+
+	<target name="merge">
+		<pipeline message="topicmerge"
+				inputmap="${work.dir}/${dita.temp.dir}/${user.input.file}"
+				tempdir="W:/Teux.site/out/temp">
+			<module class="org.dita.dost.module.TopicMergeModule">
+				<param name="validate" value="no"></param>
+				<param name="output"
+					location="${work.dir}/${dita.temp.dir}/teux_MERGED.xml"/>
+				<param name="style"
+					location="${dita.plugin.org.dita.pdf2.dir}/xsl/common/topicmerge.xsl"/>
+			</module>
+		</pipeline>
+	</target>
+
+	
+	<target name="copy.res">
+		<!-- Копировать файлы шаблона (картинки, скрипт, css) в выходной каталог -->
+		<copy todir="${dita.map.output.dir}" includeEmptyDirs="true" overwrite="true">
+			<fileset dir="${dita.plugin.ru.teux.site.dir}/template/"/>
+		</copy>
+	</target>
+	
+	
+	<target name="file.xhtml" depends="info,copy.res">
+		<xslt processor="trax" extension="${out.ext}"
+			basedir="${work.dir}/${dita.temp.dir}"
+			includesfile="${work.dir}/${dita.temp.dir}/${fullditatopicfile}"
+			destdir="${dita.map.output.dir}" style="${args.xsl}">
+			<param name="MERGED"
+				expression="file:/${work.dir}\${dita.temp.dir}\teux_MERGED.xml"/>
+			<param name="DITAEXT" expression="${dita.ext}" if="dita.ext"/>
+			<param name="FILTERFILE" expression="${dita.input.valfile}" if="dita.input.valfile"/>
+			<param name="CSS" expression="${args.css.file}" if="args.css.file"/>
+			<param name="CSSPATH" expression="${user.csspath}" if="user.csspath"/>
+			<param name="HDF" expression="${args.hdf}" if="args.hdf"/>
+			<param name="HDR" expression="${args.hdr}" if="args.hdr"/>
+			<param name="FTR" expression="${args.ftr}" if="args.ftr"/>
+			<param name="DRAFT" expression="${args.draft}" if="args.draft"/>
+			<param name="ARTLBL" expression="${args.artlbl}" if="args.artlbl"/>
+			<param name="INDEXSHOW" expression="${args.indexshow}" if="args.indexshow"/>
+			<param name="OUTEXT" expression="${out.ext}" if="out.ext"/>
+			<param name="DEFAULTLANG" expression="ru-ru"/>
+			<mapper type="regexp"
+				from="^(${tempdirToinputmapdir.relative.value})(.*?)(\.(xml|dita))$$"
+				to="\2${out.ext}"/>
+		</xslt>
+	</target>
+
+
+	<target name="site.xhtml" depends="info,merge,copy.res">
+		<xslt processor="trax" extension="${out.ext}"
+			basedir="${work.dir}/${dita.temp.dir}"
+			includesfile="${work.dir}/${dita.temp.dir}/${fullditatopicfile}"
+			destdir="${dita.map.output.dir}" style="${args.xsl}">
+			<includesfile name="${work.dir}/${dita.temp.dir}/${chunkedtopicfile}"
+				if="chunkedtopicfile"/>
+			<param name="MERGED"
+				expression="file:/${work.dir}\${dita.temp.dir}\teux_MERGED.xml"/>
+			<param name="DITAEXT" expression="${dita.ext}" if="dita.ext"/>
+			<param name="FILTERFILE" expression="${dita.input.valfile}" if="dita.input.valfile"/>
+			<param name="CSS" expression="${args.css.file}" if="args.css.file"/>
+			<param name="CSSPATH" expression="${user.csspath}" if="user.csspath"/>
+			<param name="HDF" expression="${args.hdf}" if="args.hdf"/>
+			<param name="HDR" expression="${args.hdr}" if="args.hdr"/>
+			<param name="FTR" expression="${args.ftr}" if="args.ftr"/>
+			<param name="DRAFT" expression="${args.draft}" if="args.draft"/>
+			<param name="ARTLBL" expression="${args.artlbl}" if="args.artlbl"/>
+			<param name="INDEXSHOW" expression="${args.indexshow}" if="args.indexshow"/>
+			<param name="OUTEXT" expression="${out.ext}" if="out.ext"/>
+			<param name="DEFAULTLANG" expression="ru-ru"/>
+			<mapper type="regexp"
+				from="^(${tempdirToinputmapdir.relative.value})(.*?)(\.(xml|dita))$$"
+				to="\2${out.ext}"/>
+		</xslt>
+
+		<!--Главное menu -->
+		<xslt processor="trax" classpathref="dost.class.path"
+			in="${work.dir}/${dita.temp.dir}/${dita.map.filename.root}_MERGED.xml"
+			out="${dita.map.output.dir}/arrays/menuent.js"
+			style="${dita.plugin.ru.teux.site.dir}/xsl/menu_entries.xsl">
+			<param name="DITAEXT" expression="${dita.ext}" if="dita.ext"/>
+			<param name="OUTEXT" expression="${out.ext}" if="out.ext"/>
+		</xslt>
+
+		<!-- Локальные меню и карта сайта-->
+		<xslt processor="trax" classpathref="dost.class.path"
+			in="${work.dir}/${dita.temp.dir}/${dita.map.filename.root}_MERGED.xml"
+			destdir="${dita.map.output.dir}/arrays" out="${dita.map.output.dir}/arrays/sitemap.js"
+			style="${dita.plugin.ru.teux.site.dir}/xsl/ltoc_entries.xsl">
+			<param name="DITAEXT" expression="${dita.ext}" if="dita.ext"/>
+			<param name="OUTEXT" expression="${out.ext}" if="out.ext"/>
+		</xslt>
+
+		<!-- Список последних публикаций -->
+		<xslt processor="trax" classpathref="dost.class.path"
+			in="${work.dir}/${dita.temp.dir}/${dita.map.filename.root}_MERGED.xml"
+			destdir="${dita.map.output.dir}/arrays" out="${dita.map.output.dir}/arrays/lastpub.js"
+			style="${dita.plugin.ru.teux.site.dir}/xsl/last_publication.xsl">
+			<param name="DITAEXT" expression="${dita.ext}" if="dita.ext"/>
+			<param name="OUTEXT" expression="${out.ext}" if="out.ext"/>
+		</xslt>
+	</target>
+
+</project>

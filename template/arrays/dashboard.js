@@ -1,0 +1,15 @@
+document.write('<div id="contact-info">');
+document.write('  <h3>Обратная связь:</h3>');
+document.write('  <ul>');
+document.write('	<li class="first">');
+document.write('	  <img src="images/Icon_Phone_Sm_Light.gif" alt="Phone" width="32" height="32" />Андрей Коперский:<br />(916) 101-97-66</li>');
+document.write('	<li>');
+document.write('	  <img src="images/Icon_Mail_Sm_Light.gif" alt="Email" width="32" height="32" />Email:<br /><a href="mailto:teux@mail.ru">teux@teux.ru</a></li>');
+document.write('  </ul>');
+document.write('</div>');
+document.write('<div id="contact-info">');
+document.write('  <h3>Ссылки:</h3>');
+document.write('  <ul>');
+document.write('	<li class="first"><img src="images/earth.gif" width="32" height="32" />Александр Краснов<br /><a href="http://downriver.narod.ru">http://downriver.narod.ru</a></li>');
+document.write('  </ul>');
+document.write('</div>');
