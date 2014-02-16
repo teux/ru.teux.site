@@ -11,7 +11,7 @@
     <condition property="file.prefix" value="file:/" else="">
         <os family="windows"/>
     </condition>
-
+	
 	<target name="dita2teux.site" depends="plugin-init,site.xhtml"/>
 	<target name="dita2teux.file" depends="plugin-init,file.xhtml"/>
 	<target name="plugin-init" depends="set-prop,build-init,preprocess"/>
@@ -29,13 +29,13 @@
 		<!--<property name="preprocess.move-links.skip" value="yes"/>-->
 	</target>
 
-
+	<dirname property="dita.temp.dir.fullpath" file="${dita.temp.dir}${file.separator}dummy.file"/>
 	<target name="info">
 		<echo>******************************************</echo>
 		<echo>* work.dir=${work.dir}</echo>
-		<echo>* dita.temp.dir=${dita.temp.dir}</echo>
+		<echo>* dita.temp.dir=${dita.temp.dir.fullpath}</echo>
 		<echo>* dita.map.output.dir=${dita.map.output.dir}</echo>
-		<echo>* input.file=${work.dir}/${dita.temp.dir}/${user.input.file}</echo>
+		<echo>* input.file=${dita.temp.dir.fullpath}${file.separator}${user.input.file}</echo>
 		<echo>* dita.input.valfile=${dita.input.valfile}</echo>
 		<echo>******************************************</echo>
 	</target>
@@ -43,12 +43,12 @@
 
 	<target name="merge">
 		<pipeline message="topicmerge"
-				inputmap="${work.dir}/${dita.temp.dir}/${user.input.file}"
-				tempdir="${dita.temp.dir}">
+				inputmap="${dita.temp.dir.fullpath}${file.separator}${user.input.file}"
+				tempdir="${dita.temp.dir.fullpath}">
 			<module class="org.dita.dost.module.TopicMergeModule">
 				<param name="validate" value="no"></param>
 				<param name="output"
-					location="${work.dir}/${dita.temp.dir}/teux_MERGED.xml"/>
+					location="${dita.temp.dir.fullpath}${file.separator}${dita.map.filename.root}_MERGED.xml"/>
 				<param name="style"
 					location="${dita.plugin.org.dita.pdf2.dir}/xsl/common/topicmerge.xsl"/>
 			</module>
