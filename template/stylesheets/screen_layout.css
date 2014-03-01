@@ -257,7 +257,16 @@ div#content_main {
 div.float-left{float: left; margin: 10pt 16px 0pt 0}
 div.float-right{float: right; margin: 10pt 0 10pt 16px}
 .clearFloat{ display: block;height: 0;clear: both;visibility: hidden;}
-p.floating-title{text-align:center;font-family:arial, helvetica, sans-serif;font-size:8pt;color:gray;font-weight:bold}
+p.floating-title
+{
+	max-width: 300px;
+	padding-bottom: 1em;
+	text-align:center;
+	font-family:arial, helvetica, sans-serif;
+	font-size:8pt;
+	color:gray;
+	font-weight:bold
+}
 
 * > div#content_main { /* IE min-height fix */
   min-height: 350px;
