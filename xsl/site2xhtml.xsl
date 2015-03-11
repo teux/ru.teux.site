@@ -4,12 +4,13 @@
                 xmlns:opentopic="http://www.idiominc.com/opentopic"
 	            exclude-result-prefixes="exsl opentopic">
 
-	<xsl:import href="../../org.dita.xhtml/xsl/dita2xhtml.xsl"/>
+	<xsl:import href="../../org.dita.xhtml/xsl/dita2html5.xsl"/>
 
 	<xsl:output method="html" encoding="UTF-8" indent="no"/>
 
-  <xsl:param name="MERGED"
-    select="'/Users/teux/WebstormProjects/teux.github/temp/teux_MERGED.xml'"/>
+    <xsl:param name="DITAEXT" select="'.dita'"/>
+    <xsl:param name="MERGED"
+        select="'/Users/teux/WebstormProjects/teux.github/temp/teux_MERGED.xml'"/>
 
 	<xsl:variable name="curid">
 		<xsl:variable name="id" select="/*/@id"/>
