@@ -1,147 +1,262 @@
 /* Java menu */
 .t0i {
-	font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
-	font-size: 11px;
-	color: #000000;
-	text-decoration: none;
-	line-height: 100%;
-} 
+    font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    color: #000000;
+    text-decoration: none;
+    line-height: 100%;
+}
 
 /* Headers */
 h1{
-	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
-	font-size: 14pt;
-	letter-spacing: 2px;
-	color: Navy;
-	margin: 10pt 0 8pt 0;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 14pt;
+    letter-spacing: 2px;
+    color: Navy;
+    margin: 10pt 0 8pt 0;
 }
 h2{
-	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
-	font-size: 12pt;
-	letter-spacing: 2px;
-   color: Black;
-  	margin: 0 0 10pt 0;
-  	padding: 0;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 12pt;
+    letter-spacing: 2px;
+    color: Black;
+    margin: 0 0 10pt 0;
+    padding: 0;
 }
 p.title{
-	font-weight: bold;
+    font-weight: bold;
 }
 /*General blocs */
 p{
-	margin: 6pt 0 0 0;
+    margin: 6pt 0 0 0;
 }
 
 /* Special blocs */
 div.note{
-	margin: 10px 10px 15px 20px;
-	text-indent: -15px;
-	line-height: 160%;
+    margin: 10px 10px 15px 20px;
+    text-indent: -15px;
+    line-height: 160%;
 }
 pre.pre{
-	font-family: "Courier New", Courier, monospace;
-	text-align: left;
-	margin-left: 20px;
-	margin-top: 10px;
+    font-family: "Courier New", Courier, monospace;
+    text-align: left;
+    margin-left: 20px;
+    margin-top: 10px;
 }
 p.short {
-	font-style: italic;
-	color: #171864;
-	margin: 0 0 18pt 0;
+    font-style: italic;
+    color: #171864;
+    margin: 0 0 18pt 0;
 }
 
 /* Table elements */
 th{
-	background: #e6e6fa;
-	padding: 2px 2px 2px 2px;
+    background: #e6e6fa;
+    padding: 2px 2px 2px 2px;
 }
 td {
-	padding: 2px 2px 2px 2px;
+    padding: 2px 2px 2px 2px;
 }
 
 /* General section */
 div.section{
-margin:20px 0 20px 0;
+    margin:20px 0 20px 0;
 }
 div.fignone{
-	margin: 10px 0 15px 0;
+    margin: 10px 0 15px 0;
 }
 div.fignone > br{
-	margin: 0 0 0 0;
-	font-size: 0pt;
+    margin: 0 0 0 0;
+    font-size: 0pt;
 }
 div.imagecenter{
-	text-align: center;
+    text-align: center;
 }
 div.imageright{
-	text-align: right;
+    text-align: right;
 }
 div.imageleft{
-	text-align: left;
+    text-align: left;
 }
 center{
-	margin: 10px 0 15px 0;
+    margin: 10px 0 15px 0;
 }
 
-/* Expand section */	
+/* Expand section */
 div.expandSection{
-	margin: 12px 0 12px 0px;
-	padding: 10px 10px 10px 10px;
-	background-color: #F0F8FF;
+    margin: 12px 0 12px 0px;
+    padding: 10px 10px 10px 10px;
+    background-color: #F0F8FF;
 }
 span.expandShort{
-	font-size: 8pt;
-	font-weight: normal;
-	color: Gray;
+    font-size: 8pt;
+    font-weight: normal;
+    color: Gray;
 }
 a.expandCaption{
-	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
-	font-size : 11pt;
-	font-weight: bold;
-	margin: 0 0 8pt 0;
-	letter-spacing : 1px;
-   color: Red;
-	text-decoration: none;
+    font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size : 11pt;
+    font-weight: bold;
+    margin: 0 0 8pt 0;
+    letter-spacing : 1px;
+    color: Red;
+    text-decoration: none;
 }
 
 /* Photo section (table with photo) */
 table.photoFile{
-	margin-top: 0;
-	margin-bottom: 20px;	
+    margin-top: 0;
+    margin-bottom: 20px;
 }
 table.photoFile td{
-	border: solid;
-	border-color: #DCDCDC;
-	border-width: 1pt;
-	background-color: #F2F2F2;
-	padding: 0 0 15pt 20pt;
-	text-align: center;
-	vertical-align: top;
+    border: solid;
+    border-color: #DCDCDC;
+    border-width: 1pt;
+    background-color: #F2F2F2;
+    padding: 0 0 15pt 20pt;
+    text-align: center;
+    vertical-align: top;
 }
 img.photo{
-	margin-bottom: 5px;
-	margin-right: 20pt;
-	border: none;
+    margin-bottom: 5px;
+    margin-right: 20pt;
+    border: none;
 }
 table.photoFile td object{
-	margin-top: 20pt;
-	margin-right: 20pt;
+    margin-top: 20pt;
+    margin-right: 20pt;
 }
 
 p.camera{
-	text-align: right;
+    text-align: right;
 }
 p.camera img{
-	margin: 0; padding: 0;
+    margin: 0; padding: 0;
 }
 p.camera a:link,
 p.camera a:visited,
 p.camera a:active,
 p.camera a:hover{
-	text-decoration: none;
+    text-decoration: none;
 }
 
-/*used, but not styled*/
+/*used but not styled*/
 .txt-light-gray {}
 .topictitle1{}
 .ullinks{}
 .sectiontitle{}
+
+/*parallax*/
+.parallax {
+    position: relative;
+    width: 100%;
+    height: 150px;
+    margin: 6pt 0;
+    overflow: hidden;
+}
+.parallax--bg-image {
+    position: absolute;
+    width: 100%;
+}
+.parallax--link {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.parallax--link:after {
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;
+    background: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwLjYiLz4KICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAuMiIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAuNiIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+");
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.6) 100%);
+    background: -moz-linear-gradient(top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.6) 100%);
+    background: -o-linear-gradient(top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.6) 100%);
+    background: -ms-linear-gradient(top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.6) 100%);
+    background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.6) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#99000000', endColorstr='#99000000',GradientType=0 );
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+.parallax--content {
+    position: absolute;
+    width: 100%;
+    top: 30px;
+    margin: auto;
+    text-align: center;
+    z-index: 3;
+}
+.parallax--shortdesc {
+    display: block;
+    vertical-align: middle;
+    text-align: center;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 20px;
+    color: #fff;
+    text-transform: uppercase;
+    text-shadow: 0px 0px 15px #000;
+}
+.parallax--title {
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    vertical-align: middle;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 40px;
+    font-family: Roboto Condensed, Arial, sans-serif;
+    color: #fff;
+    text-transform: uppercase;
+    border-bottom: 2px solid transparent;
+    text-shadow: 0px 0px 10px #000;
+}
+.parallax--note {
+    display: block;
+    position: relative;
+    z-index: 1;
+    vertical-align: middle;
+    font: 700 14px/28px 'Arial';
+    text-shadow: 2px 3px 20px #000;
+    color: #f7f7f7;
+    text-transform: uppercase;
+    background: #ff545b;
+    margin: 15px auto 0;
+    width: 80px;
+    height: 28px;
+}
+.parallax--note:before {
+    content: '';
+    display: block;
+    font-size: 0;
+    line-height: 0;
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: -6px;
+    border-right: 6px solid #ff545b;
+    border-top: 14px solid transparent;
+    border-bottom: 14px solid transparent;
+    width: 0px;
+    height: 0px;
+}
+.parallax--note:after {
+    content: '';
+    display: block;
+    font-size: 0;
+    line-height: 0;
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    right: -6px;
+    border-left: 6px solid #ff545b;
+    border-top: 14px solid transparent;
+    border-bottom: 14px solid transparent;
+    width: 0px;
+    height: 0px;
+}
