@@ -154,6 +154,14 @@ p.camera a:hover{
     margin: 6pt 0;
     overflow: hidden;
 }
+.parallax--scroll-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
 .parallax--bg-image {
     position: absolute;
     width: 100%;
@@ -205,6 +213,7 @@ p.camera a:hover{
 .parallax--title {
     display: inline-block;
     position: relative;
+    width: 100%;
     z-index: 1;
     vertical-align: middle;
     font-weight: 700;
@@ -217,18 +226,20 @@ p.camera a:hover{
     text-shadow: 0px 0px 10px #000;
 }
 .parallax--note {
-    display: block;
+    display: inline-block;
     position: relative;
-    z-index: 1;
+    width: auto;
+    height: 28px;
+    margin: 8px auto 0;
+    padding: 0 10px;
     vertical-align: middle;
     font: 700 14px/28px 'Arial';
     text-shadow: 2px 3px 20px #000;
+    white-space: nowrap;
     color: #f7f7f7;
     text-transform: uppercase;
     background: #ff545b;
-    margin: 15px auto 0;
-    width: 80px;
-    height: 28px;
+    z-index: 1;
 }
 .parallax--note:before {
     content: '';
