@@ -35,7 +35,6 @@
 					href="stylesheets/colorbox.css"/>
                 <link rel="shortcut icon" href="images/favicon.ico"/>
 				<script type="text/javascript" src="scripts/jquery.min.js"/>
-				<script type="text/javascript" src="scripts/jquery.colorbox.js"/>
 				<script type="text/javascript" src="scripts/main.js"/>
 				<script type="text/javascript" src="scripts/menu.js"/>
 				<script type="text/javascript" src="arrays/menuent.js"/>
@@ -46,6 +45,7 @@
 				  $("a[rel='slideshow']").colorbox({slideshow:"true", slideshowAuto:"true", slideshowSpeed:"4000", slideshowStart:"Начать показ", slideshowStop:"Остановить показ", current:"фото {current} из {total}", width:"70%"});
 			  });
 		  </script>
+				<script type="text/javascript" src="scripts/jquery.colorbox.js"/>
 				<!-- Ссылка на локальное меню - зависит от номера части главного меню -->
 				<xsl:variable name="treeName">
 					<xsl:variable name="partId"

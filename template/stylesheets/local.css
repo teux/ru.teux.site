@@ -144,7 +144,9 @@ p.camera a:hover{
 .txt-light-gray {}
 .topictitle1{}
 .ullinks{}
-.sectiontitle{}
+.sectiontitle {
+    margin-top: 12pt;
+}
 
 /*parallax*/
 .parallax {

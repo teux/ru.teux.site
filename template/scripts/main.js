@@ -1,5 +1,5 @@
 ﻿$(function(){$("div#ltoc").hover(expandTOC,	function(){$(this).stop(true,false).animate({width:175},{"duration":"fast","easing":"swing"});});});
-$(document).ready(function(){$("div#ltoc").css({overflow:"hidden"});$("a[rel='cbgroup']").colorbox({transition:"elastic", speed:"700"});});
+$(document).ready(function(){$("div#ltoc").css({overflow:"hidden"});});
 
 function getContentWidth(obj) {
     var cWidth, cObj, width = 0;

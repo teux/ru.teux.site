@@ -9,7 +9,7 @@
 	TRUE = true,
 	FALSE = false,
 	cboxPublic,
-	isIE = !$.support.opacity,
+	isIE = false,
 	isIE6 = isIE && !window.XMLHttpRequest,
 
 	// Event Strings (to increase compression)
@@ -356,13 +356,13 @@
 			$topBorder[0].style.width = $bottomBorder[0].style.width = $content[0].style.width = that.style.width;
 			$loadingGraphic[0].style.height = $loadingOverlay[0].style.height = $content[0].style.height = $leftBorder[0].style.height = $rightBorder[0].style.height = that.style.height;
 		}
-		
+
 		$cbox.dequeue().animate({width:settings.w+loadedWidth, height:settings.h+loadedHeight, top:posTop, left:posLeft}, {duration: animate_speed,
 			complete: function(){
 				modalDimensions(this);
 				
 				active = FALSE;
-				
+				$cbox.show();
 				// shrink the wrapper down to exactly the size of colorbox to avoid a bug in IE's iframe implementation.
 				$wrap[0].style.width = (settings.w+loadedWidth+interfaceWidth) + "px";
 				$wrap[0].style.height = (settings.h+loadedHeight+interfaceHeight) + "px";
