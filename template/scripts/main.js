@@ -39,21 +39,21 @@ function fadeDIV(maintext, descr){
 // requestAnimationFrame polyfill
 (function ($, window) {
     window.requestAnimationFrame = window.requestAnimationFrame ||
-    window.webkitRequestAnimationFrame ||
-    window.mozRequestAnimationFrame ||
-    window.msRequestAnimationFrame ||
-    window.oRequestAnimationFrame ||
-    function (fCallback) {
-        window.setTimeout(fCallback, 1e3 / 60);
-    };
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        function (fCallback) {
+            window.setTimeout(fCallback, 1e3 / 60);
+        };
     window.cancelAnimationFrame = window.cancelAnimationFrame ||
-    window.webkitCancelAnimationFrame ||
-    window.mozCancelAnimationFrame ||
-    window.msCancelAnimationFrame ||
-    window.oCancelAnimationFrame ||
-    function (requestID) {
-        window.clearTimeout(requestID);
-    };
+        window.webkitCancelAnimationFrame ||
+        window.mozCancelAnimationFrame ||
+        window.msCancelAnimationFrame ||
+        window.oCancelAnimationFrame ||
+        function (requestID) {
+            window.clearTimeout(requestID);
+        };
 })(jQuery, window);
 
 // Parallax slot for maps
@@ -70,13 +70,14 @@ function fadeDIV(maintext, descr){
         if (!(this instanceof ParallaxBlock)) {
             return new ParallaxBlock(opts);
         }
+        this.bounds = {};
         for (var name in opts) {
             if (this[name] === undefined) {
                 this[name] = opts[name];
             }
         }
-        this.repaint();
         jWindow.bind('scroll', this.onScroll.bind(this));
+        // Пеориодическая проверка изменения размеров окна (disqus)
         window.setInterval(function () {
             if (this.bounds.windowHeight !== jWindow.height()
                 || this.bounds.docHeight !== jDoc.height()) {
@@ -104,16 +105,23 @@ function fadeDIV(maintext, descr){
     };
     ParallaxBlock.prototype.onScroll = function () {
         var scroll, portion, k;
+        if (this.preventRepaint) {
+            return;
+        }
         scroll = jWindow.scrollTop();
         portion = this.slowdown ?
         this.bounds.max - scroll :
         scroll - this.bounds.min;
-        k = this.bounds.range && portion / this.bounds.range;
-        if (k >= 0 && k <= 1 && k !== this.bounds.k && !this.preventRepaint) {
+        if (this.bounds.range) {
+            k = portion / this.bounds.range;
+        } else if (this.slowdown) {
+            k = 1;
+        }
+        if (k >= 0 && k <= 1 && k !== this.bounds.k) {
             this.bounds.k = k;
             this.preventRepaint = true;
             requestAnimationFrame(function () {
-                this.scrollCont.scrollTop(this.maxScroll * k);
+                this.bgImg.css('bottom', this.maxScroll * k - this.maxScroll);
                 this.preventRepaint = false;
             }.bind(this));
         }
@@ -121,16 +129,16 @@ function fadeDIV(maintext, descr){
     $(function () {
         $('.js-module, [data-module*="Parallax"]').each(function (i, elem) {
             elem = $(elem);
-            var opts = {
-                elem: elem,
-                maxScroll: elem.find('.parallax--bg-image').height() - elem.height(),
-                slowdown: elem.attr('data-slowdown') === 'true',
-                scrollCont: elem.find('.parallax--scroll-container')
-            };
-            if (opts.slowdown) {
-                opts.scrollCont.scrollTop(opts.maxScroll);
-            }
-            window.addEventListener('load', ParallaxBlock.bind(null, opts));
+            window.addEventListener('load', function () {
+                var bgImg = elem.find('.parallax--bg-image');
+                var opts = {
+                    elem: elem,
+                    bgImg: bgImg,
+                    maxScroll: bgImg.height() - elem.height(),
+                    slowdown: elem.attr('data-slowdown') === 'true'
+                };
+                ParallaxBlock(opts);
+            });
         });
     });
 })(jQuery, window);
