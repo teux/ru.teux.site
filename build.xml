@@ -23,10 +23,11 @@
 		<!--Вывод related-links типа child-->
 		<property name="args.rellinks" value="all"/>
 		<property name="include.rellinks" value="child"/>
-		<!--Следующие свойства не должны устанвливатсья, чтобы правильно выводились related-links-->
+		<!--Следующее свойство лечит баг записи releted-links внутрь топиков-->
+		<property name="onlytopic.in.map" value="true"/>
+		<!--Следующие свойства не должны установливатсья, чтобы правильно выводились related-links-->
 		<!--<property name="preprocess.topicpull.skip" value="yes"/>-->
 		<!--<property name="preprocess.maplink.skip" value="yes"/>-->
-		<!--<property name="preprocess.move-links.skip" value="yes"/>-->
 	</target>
 
 	<dirname property="dita.temp.dir.fullpath" file="${dita.temp.dir}${file.separator}dummy.file"/>

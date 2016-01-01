@@ -4,7 +4,7 @@
                 xmlns:opentopic="http://www.idiominc.com/opentopic"
 	            exclude-result-prefixes="exsl opentopic">
 
-	<xsl:import href="../../org.dita.xhtml/xsl/dita2html5.xsl"/>
+	<xsl:import href="../../org.dita.html5/xsl/dita2html5.xsl"/>
 
 	<xsl:output method="html" encoding="UTF-8" indent="no"/>
 
